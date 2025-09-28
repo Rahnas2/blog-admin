@@ -1,4 +1,5 @@
-const authService = require('../services/auth.service')
+const authService = require('../services/auth.service');
+const { httpStatusCodes } = require('../utils/httpStatusCodes');
 
 exports.register = async (req, res, next) => {
     try {
@@ -31,6 +32,24 @@ exports.logout = (req, res, next) => {
         res.clearCookie('refreshToken');
         res.json({ message: 'Logged out successfully' });
     } catch (error) {
+        next(error)
+    }
+}
+
+exports.refreshToken = async (req, res, next) => {
+    try {
+        const refreshToken = req.cookies.refreshToken
+        console.log('refresh token -> ', refreshToken)
+        if (!refreshToken) {
+            res.status(httpStatusCodes.BAD_REQUEST).json({ message: "Unauthorized" })
+            return
+        }
+
+        const  accessToken  = await authService.refreshToken(refreshToken)
+
+        res.status(httpStatusCodes.OK).json({ message: 'success', accessToken })
+    } catch (error) {
+        console.log('refresth errror ', error)
         next(error)
     }
 }

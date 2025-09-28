@@ -10,11 +10,11 @@ const idSchema = require('../validations/id.validator');
 const router = express.Router(); 
 
 router.route('/')
-.post(protect, validateBody(blogSchema), upload.single('image'), createBlog)
-.get(protect, getAllBlog)
+.post(validateBody(blogSchema), upload.single('image'), createBlog)
+.get(getAllBlog)
 
 router.route('/:id')
-.get(protect, validateParams(idSchema), getBlog)
+.get(validateParams(idSchema), getBlog)
 .delete(protect, validateParams(idSchema), deleteBlog)
 
 module.exports = router

@@ -10,7 +10,12 @@ const { notFound, errorHandler } = require('./middlewares/error.middleware');
 const app = express()
 const PORT = process.env.PORT || 5050
 
-app.use(cors())
+app.use(cors({
+  origin: true,        
+  methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+  credentials: true   
+}))
+
 app.use(express.json());
 app.use(express.urlencoded({extended: true}))
 app.use(cookieParser());

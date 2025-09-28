@@ -1,5 +1,6 @@
 const adminRepo = require('../repositories/admin.repository');
 const bcrypt = require('bcryptjs');
+const jwt = require("jsonwebtoken");
 
 const { accessToken, refreshToken } = require('../utils/generateToken')
 
@@ -16,7 +17,7 @@ exports.registerAdmin = async ({ userName, password }) => {
         password: hashedPassword,
     });
 
-    return { id: admin._id, userName: admin.userName } 
+    return { id: admin._id, userName: admin.userName }
 };
 
 exports.loginAdmin = async ({ userName, password }) => {
@@ -31,3 +32,11 @@ exports.loginAdmin = async ({ userName, password }) => {
 
     return { accessToken: tokenAccess, refreshToken: tokenRefresh, admin: { id: admin._id, userName: admin.userName } };
 };
+
+exports.refreshToken = async (refreshToken) => {
+    const decode = jwt.verify(refreshToken, process.env.REFRESH_JWT_SECRET)
+
+    const tokenAccess = accessToken(decode);
+
+    return tokenAccess
+}

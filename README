@@ -1,0 +1,49 @@
+1. Project Overview
+
+This is a full-stack Blog application with both frontend and backend.
+
+Frontend: React, Tailwind CSS
+
+Backend: Node.js, Express
+
+Database: MongoDB
+
+Features: Create, read, delete (CRUD) blogs, user authentication, image upload, and role-based access.
+
+
+2. Setup & Installation
+
+Backend
+
+1. Navigate to backend folder:
+cd server
+
+2. Install dependencies:
+npm install
+
+3. Create .env file with following variables:
+PORT=8080
+MONGO_URI=<your-mongodb-uri>
+ACCESS_JWT_SECRET=<jwt-access-secret>
+REFRESH_JWT_SECRET=<jwt-refresh-secret>
+CLOUDINARY_CLOUD_NAME=<cloud-name>
+CLOUDINARY_API_KEY=<api-key>
+CLOUDINARY_API_SECRET=<api-secret>
+
+4. Start the backend server:
+npm run dev
+
+
+Frontend
+
+1. Navigate to frontend folder:
+cd client
+
+2. Install dependencies:
+npm install
+
+3. Create .env file with following variable:
+VITE_BACKEND_URI=http://localhost:8080
+
+4. Start the frontend server:
+npm run dev

@@ -1,0 +1,46 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import "tailwindcss";
+
+
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: #74787C;
+  background-color: #FFF5F3;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+}
+
+h2, h3 {
+  font-family: 'Lobster Two', cursive;
+  color: #103741
+}
+
+.border-bottom-gradient {
+  position: relative;
+}
+
+.border-bottom-gradient::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4px; /* Adjust thickness as needed */
+  background: linear-gradient(to right, 
+    #fac900 0%, #fac900 16.67%, 
+    #153b8e 16.67%, #153b8e 33.34%, 
+    #f07e01 33.34%, #f07e01 50%, 
+    #bad700 50%, #bad700 66.67%, 
+    #00a2d3 66.67%, #00a2d3 83.34%, 
+    #dc2c1d 83.34%, #dc2c1d 100%
+  );
+}
